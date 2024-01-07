@@ -36,21 +36,21 @@ router.get("/profile", authMiddleware.isAuthenticated, usersController.profile);
 // riders
 router.get("/riders", ridersController.list);
 
-router.get('/riders/create', ridersController.create);
+router.get('/riders/create', authMiddleware.isAuthenticated, authMiddleware.isAdmin, ridersController.create);
 
-router.post("/riders/create", multerConfig.fields([{ name: 'image', maxCount: 1}, { name: 'gallery', maxCount: 5 }]), ridersController.doCreate);
+router.post("/riders/create",authMiddleware.isAuthenticated, authMiddleware.isAdmin, multerConfig.fields([{ name: 'image', maxCount: 1 }, { name: 'gallery', maxCount: 5 }]), ridersController.doCreate);
 
 
 // Otras rutas...
-router.get("/riders/:id", /*authMiddleware.isAuthenticated,*/ ridersController.details);
-router.get("/riders/:id/delete", /*authMiddleware.isAuthenticated,*/ ridersController.delete);
-router.get("/riders/:id/update", /*authMiddleware.isAuthenticated,*/ ridersController.update);
-/*router.post("/riders/:id/update", /*authMiddleware.isAuthenticated, multer.single('image'), ridersController.doUpdate);*/
+router.get("/riders/:id", authMiddleware.isAuthenticated, ridersController.details);
+router.get("/riders/:id/delete", authMiddleware.isAuthenticated, authMiddleware.isAdmin, ridersController.delete);
+router.get("/riders/:id/update", authMiddleware.isAuthenticated, authMiddleware.isAdmin, ridersController.update);
+router.post("/riders/:id/update", authMiddleware.isAuthenticated, multerConfig.fields([{ name: 'image', maxCount: 1 }]), ridersController.doUpdate);
 //ruta para la galeria //
-router.get('/riders/:id/gallery',ridersController.gallery);
+router.get('/riders/:id/gallery', ridersController.gallery);
 // comments
-router.get("/comments/:id/delete", /*authMiddleware.isAuthenticated,*/ commentsController.delete);
-router.post("/comments/:id/create", /*authMiddleware.isAuthenticated,*/ commentsController.doCreate);
+router.get("/comments/:id/delete", authMiddleware.isAuthenticated, commentsController.delete);
+router.post("/comments/:id/create", authMiddleware.isAuthenticated, commentsController.doCreate);
 
 // likes
 router.post("/user/:riderId/like", likesController.doCreate)

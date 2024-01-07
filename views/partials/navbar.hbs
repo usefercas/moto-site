@@ -1,43 +1,46 @@
 <nav class="navbar" style="background-color: #e3f2fd;">
   <div class="container-fluid">
-    <a class="navbar-brand" href="/"><img src="/images/logojpeg.jpeg" align-items="center" width="40px" height="40px">Home</img></a>
-     
+    <a class="navbar-brand" href="/"><img src="/images/logojpeg.jpeg" align-items="center" width="40px"
+        height="40px">Home</img></a>
+
     <ul class="nav nav-tabs">
       {{#if currentUser}}
-      <li class="nav-item">
-        <a class="nav-link active" aria-current="page" href="/profile">Profile</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link active" aria-current="page" href="/riders/create">Create Rider</a>
-      </li>
-      {{else}}
-      <li class="nav-item">
-        <a class="nav-link active" aria-current="page" href="/register">Register</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link active" aria-current="page" href="/login">Login</a>
-      </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="/profile">Profile</a>
+        </li>
+        {{#if currentUser.isAdmin}}
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="/riders/create">Create Rider</a>
+          </li>
         {{/if}}
+      {{else}}
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="/riders">Riders List</a>
-        </li>
-         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="/riders?legend=true">Riders Legends</a>
+          <a class="nav-link active" aria-current="page" href="/register">Register</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link active text-danger" aria-current="page" href="/logout">Logout</a>
+          <a class="nav-link active" aria-current="page" href="/login">Login</a>
         </li>
-      </ul>
-      <a class="navbar-brand"></a>
-      <form class="d-flex" role="search">
-        <input type="text" value="" name="search" class="form-control" placeholder="Search" aria-label="Search"  m-l="5px">
-        <button class="btn btn-outline-success" type="submit">Search</button>
-      </form>      
-      {{#if currentUser}}
-        <div class="mb-2 mr-2">
-          Hello,
-          {{currentUser.username}}
-        </div>
       {{/if}}
+      <li class="nav-item">
+        <a class="nav-link active" aria-current="page" href="/riders">Riders List</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link active" aria-current="page" href="/riders?legend=true">Riders Legends</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link active text-danger" aria-current="page" href="/logout">Logout</a>
+      </li>
+    </ul>
+    <a class="navbar-brand"></a>
+    <form class="d-flex" role="search">
+      <input type="text" value="" name="search" class="form-control" placeholder="Search" aria-label="Search" m-l="5px">
+      <button class="btn btn-outline-success" type="submit">Search</button>
+    </form>
+    {{#if currentUser}}
+    <div class="mb-2 mr-2">
+      Hello,
+      {{currentUser.username}}
+    </div>
+    {{/if}}
   </div>
 </nav>

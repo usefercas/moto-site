@@ -1,4 +1,5 @@
 module.exports.isAuthenticated = (req, res, next) => {
+    console.log("Is autenticathed -> ", req.session.currentUser);
     if (req.session.currentUser) {
       next();
     } else {

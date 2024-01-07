@@ -85,7 +85,7 @@ module.exports.login = (req, res, next) => {
 
 module.exports.doLogin = (req, res, next) => {
   const { email, password } = req.body;
-
+  // crea la funcion de lo que pasa si hay errores
   const renderWithErrors = (msg) => {
     res.render('auth/login', {
       email,
