@@ -1,0 +1,46 @@
+<div id="login" class="container col-xxl-4">
+
+  {{#if rider}}
+    <h1 class="text-center mt-5 mb-4">Update</h1>
+    <h2 class="text-center mb-4 text-secondary">{{rider.name}}</h2>
+  {{else}}
+    <h1 class="text-center mt-5 mb-4">Create</h1>
+  {{/if}}
+
+  <form class="container-sm mx-auto" style="max-width: 400px;"
+    action="/riders/{{#if rider}}{{rider._id}}update{{else}}create{{/if}}" method="POST" enctype="multipart/form-data">
+    <div class="mb-3">
+      <label for="name" style="color: #3498db;" class="form-label">Name</label>
+      <input {{#if rider}}value="{{rider.name}}" {{else}}placeholder="Type name" required{{/if}} type="text" name="name"
+        class="{{#if errors}}is-invalid{{/if}} form-control" id="name" aria-describedby="nameHelp">
+    </div>
+    <div class="mb-3">
+      <label for="nationality" style="color: #3498db;" class="form-label">Nationality</label>
+      <input {{#if rider}}value="{{rider.nationality}}" {{else}}placeholder="Type nationality" required{{/if}}
+        type="text" name="nationality" class="{{#if errors}}is-invalid{{/if}} form-control" id="nationality">
+    </div>
+    <div class="mb-3">
+      <label for="image" style="color: #3498db;" class="form-label">Image</label>
+      <input placeholder="Upload an image" type="file" name="image" class="{{#if errors}}is-invalid{{/if}} form-control"
+        id="image">
+    </div>
+
+    <div class="mb-3">
+      <label for="gallery" style="color: #3498db;" class="form-label">Gallery</label>
+      <input placeholder="Upload an image" type="file" name="gallery" 
+      class="{{#if errors}}is-invalid{{/if}} form-control" id="gallery"  multiple="multiple">
+    </div>
+
+    {{#if errors}}
+      <div class="mb-3">
+        <small class="text-danger">{{errors.msg}}</small>
+      </div>
+    {{/if}}
+    {{#if rider}}
+      <button type="submit" class="btn btn-success"><i data-feather="edit"></i></button>
+      <a href="/riders/{{rider._id}}" class="btn btn-secondary"><i data-feather="skip-back"></i></a>
+    {{else}}
+      <button type="submit" class="btn btn-success">Create</button>
+    {{/if}}
+  </form>
+</div>

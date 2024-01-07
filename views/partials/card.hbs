@@ -1,0 +1,19 @@
+<div class="col">
+  <div class="card h-100">
+    {{currentUser}}
+    {{!-- <img src="..." class="card-img-top" alt="..."> --}}
+    <div class="card-body">
+   <img class="card-img" src={{rider.image}}/>
+      <h5 class="card-title">{{rider.name}}</h5>
+      <img class="card-flag" src={{rider.flag}} width="20px" height="20px"></img>
+      <p class="card-text">From {{rider.nationality}}</p>
+    </div>
+    <div class="card-footer d-flex justify-content-between">
+      <small class="text-body-secondary"><a href="/riders/{{rider.id}}" class="link-opacity-50-hover">See Details</a></small>
+    </div>
+    
+    <form action="/user/{{rider._id}}/like" method="POST">
+      <button type="submit" class="btn  {{#riderIsLikedByUser likes=rider.likes userId=currentUser._id}} btn-danger {{else}} btn-secondary {{/riderIsLikedByUser}}">Likes {{rider.likes.length}}</button>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,25 @@
+body {
+    font: 1rem/1.5 var(--bs-font-sans-serif);
+  }
+
+a {
+    color: var(--bs-blue);
+  }
+
+.card-img {
+    align-items: center;
+    background-image: url("../images/moto25.jpg");
+    background-position: center;
+    background-size: cover;
+  }
+
+.img-thumbnail {
+    background-image: url("../images/moto25.jpg");
+    background-position: center;
+    background-size: cover;
+  }
+.container {
+  margin-top: 10px;
+}
+
+  
