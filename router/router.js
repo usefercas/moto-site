@@ -38,8 +38,7 @@ router.get("/riders", ridersController.list);
 
 router.get('/riders/create', ridersController.create);
 
-router.post("/riders/create", multerConfig.fields([{ name: 'image', maxCount: 5}, 
-{ name: 'gallery', maxCount: 5 }]), ridersController.doCreate);
+router.post("/riders/create", multerConfig.fields([{ name: 'image', maxCount: 1}, { name: 'gallery', maxCount: 5 }]), ridersController.doCreate);
 
 
 // Otras rutas...
