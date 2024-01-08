@@ -49,5 +49,5 @@ app.use((err, req, res, next) => {
 })
 
 const port = process.env.PORT || 3000;
-
+//const migration = require("./bin/ridersSeed.js");
 app.listen(port, () => console.log(`App running at port ${port} 🚀🚀`));

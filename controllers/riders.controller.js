@@ -53,7 +53,6 @@ module.exports.create = (req, res, next) => {
 module.exports.doCreate = function (req, res, next) {
   console.log("esto lleva la req", req);
   // Si existe un archivo en la solicitud, es la imagen principal
-  console.log("Esta es la imagen", )
   if (req.files.image) {
     console.log("Este es el path de la imagen", req.files.image[0].path)
     req.body.image = req.files.image[0].path;
